@@ -70,7 +70,6 @@ fn main() -> Result<(), Box<dyn Error>> {
     // filter out cards which aren't due
     let mut due_cards = cards.iter_mut().filter(|(_, card)| {
         let time_elapsed = SystemTime::now().duration_since(card.last_viewed).unwrap();
-        println!("{}: {:?}", card.level, time_elapsed);
         match card.level {
             0 => time_elapsed >= Duration::from_secs(0),
             1 => time_elapsed >= Duration::from_secs(60),
